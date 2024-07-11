@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Task List</title>
+</head>
+<body>
+    <h1>Task List</h1>
+    <ul id="task-list"></ul>
+    <script>
+      fetch('tasks.json')
+        .then(response => response.json())
+        .then(tasks => {
+          const taskList = document.getElementById('task-list');
+          tasks.forEach(task => {
+            const listItem = document.createElement('li');
+            listItem.textContent = task.name;
+            taskList.appendChild(listItem);
+          });
+        });
+    </script>
+</body>
+</html>
